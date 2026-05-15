@@ -1,20 +1,11 @@
-# Multilevel Feedback Queue (MLFQ) Scheduling in C
 
-The following C program simulates the MLFQ scheduling problem you asked about.
-
-## Rules Used
-
+/*
 * Queue 1 → Time Quantum = 4
 * Queue 2 → Time Quantum = 5
 * Queue 3 → FCFS
 * New processes always enter Queue 1
 * Higher-priority queues preempt lower-priority queues
-
----
-
-# C Code
-
-```c
+*/
 #include <stdio.h>
 
 struct Process {
@@ -44,7 +35,7 @@ int main() {
 
         int executed = 0;
 
-        // ---------------- Queue 1 ----------------
+        // Queue 1 
         for(int i=0;i<6;i++) {
             if(p[i].arrival <= time && p[i].remaining > 0) {
 
@@ -68,7 +59,7 @@ int main() {
             }
         }
 
-        // ---------------- Queue 2 ----------------
+        //  Queue 2 
         for(int i=0;i<6;i++) {
             if(p[i].arrival <= time && p[i].remaining > 0) {
 
@@ -129,51 +120,3 @@ int main() {
 
     return 0;
 }
-```
-
----
-
-# What This Program Does
-
-The program:
-
-1. Stores all processes with:
-
-   * arrival time
-   * burst time
-   * remaining time
-
-2. Simulates:
-
-   * Queue 1 with quantum 4
-   * Queue 2 with quantum 5
-   * Queue 3 behavior
-
-3. Calculates:
-
-   * Completion Time (CT)
-   * Turnaround Time (TAT)
-   * Waiting Time (WT)
-   * Average WT and TAT
-
----
-
-# Important Concept in This Code
-
-If a new process arrives in Queue 1 while a Queue 2 or Queue 3 process is running:
-
-* the lower-priority process is preempted
-* Queue 1 process executes immediately
-
-This follows MLFQ priority rules.
-
----
-
-# Compile and Run
-
-Use:
-
-```bash
-gcc mlfq.c -o mlfq
-./mlfq
-```
