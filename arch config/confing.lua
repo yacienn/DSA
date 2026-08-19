@@ -21,7 +21,7 @@ hl.monitor({
 
 local terminal    = "kitty"
 local fileManager = "kitty -e yazi"
-local menu        = "hyprlauncher"
+local menu        = "rofi -show drun -theme ~/.config/rofi/theme.rasi"
 local editor      = "code"
 
 
@@ -32,6 +32,12 @@ local editor      = "code"
 hl.on("hyprland.start", function ()
     -- Start Waybar
     hl.exec_cmd("waybar")
+
+    -- Start wallpaper daemon
+    hl.exec_cmd("awww-daemon")
+
+    -- Set wallpaper
+    hl.exec_cmd("sleep 1 && awww img ~/pic/1387268.jpg")
 
     -- Start dropdown terminal
     hl.exec_cmd("kitty --class dropdown-terminal")
@@ -396,7 +402,7 @@ local mainMod = "ALT"
 -- ============================================================
 
 hl.bind(
-    mainMod .. " + Q",
+    mainMod .. " + A",
     hl.dsp.exec_cmd(terminal)
 )
 
@@ -407,7 +413,7 @@ hl.bind(
 -- ============================================================
 
 hl.bind(
-    mainMod .. " + C",
+    mainMod .. " + R",
     hl.dsp.window.close()
 )
 
@@ -440,7 +446,7 @@ hl.bind(
 -- ============================================================
 
 hl.bind(
-    mainMod .. " + SHIFT + C",
+    mainMod .. " + C",
     hl.dsp.exec_cmd(editor)
 )
 
@@ -451,7 +457,7 @@ hl.bind(
 -- ============================================================
 
 hl.bind(
-    mainMod .. " + R",
+    mainMod .. " + I",
     hl.dsp.exec_cmd(menu)
 )
 
@@ -495,13 +501,11 @@ hl.bind(
 -- ALT + TAB
 -- ============================================================
 
--- Next window
 hl.bind(
     "ALT + TAB",
     hl.dsp.window.cycle_next()
 )
 
--- Previous window
 hl.bind(
     "ALT + SHIFT + TAB",
     hl.dsp.window.cycle_next({
@@ -639,7 +643,7 @@ hl.bind(
 -- ============================================================
 
 hl.bind(
-    mainMod .. " + T",
+    mainMod .. " + G",
     hl.dsp.workspace.toggle_special("dropdown")
 )
 
@@ -756,7 +760,15 @@ hl.bind(
     hl.dsp.exec_cmd("systemctl poweroff")
 )
 
+-- ============================================================
+-- TELEGRAM
+-- Alt + G
+-- ============================================================
 
+hl.bind(
+    mainMod .. " + T",
+    hl.dsp.exec_cmd("Telegram")
+)
 -- ============================================================
 -- MEDIA CONTROLS
 -- ============================================================
@@ -871,6 +883,7 @@ hl.window_rule({
     float = true,
 })
 
+
 -- ============================================================
 -- FIREFOX
 -- Alt + W
@@ -880,8 +893,16 @@ hl.bind(
     mainMod .. " + W",
     hl.dsp.exec_cmd("firefox")
 )
------------------------------
----- HYPRMOD ----------------
------------------------------
+hl.window_rule({
+    name = "vscode-transparent",
 
+    match = {
+        class = "^code$",
+    },
+
+    opacity = "0.83 override 0.995 override",
+})
+
+
+-- HyprMod managed settings
 require("hyprland-gui")
