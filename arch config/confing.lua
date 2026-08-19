@@ -32,6 +32,9 @@ local editor      = "code"
 hl.on("hyprland.start", function ()
     -- Start Waybar
     hl.exec_cmd("waybar")
+
+    -- Start dropdown terminal
+    hl.exec_cmd("kitty --class dropdown-terminal")
 end)
 
 
@@ -550,16 +553,12 @@ for i = 1, 10 do
 
     local key = i % 10
 
-    -- Switch workspace
-
     hl.bind(
         mainMod .. " + " .. key,
         hl.dsp.focus({
             workspace = i
         })
     )
-
-    -- Move window to workspace
 
     hl.bind(
         mainMod .. " + SHIFT + " .. key,
@@ -591,7 +590,6 @@ hl.bind(
 
 -- ============================================================
 -- SCROLL WORKSPACES
--- Alt + Mouse Wheel
 -- ============================================================
 
 hl.bind(
@@ -611,7 +609,6 @@ hl.bind(
 
 -- ============================================================
 -- MOVE WINDOW WITH MOUSE
--- Alt + Left Mouse
 -- ============================================================
 
 hl.bind(
@@ -625,7 +622,6 @@ hl.bind(
 
 -- ============================================================
 -- RESIZE WINDOW WITH MOUSE
--- Alt + Right Mouse
 -- ============================================================
 
 hl.bind(
@@ -736,6 +732,28 @@ hl.bind(
     hl.dsp.exec_cmd(
         "mkdir -p ~/Pictures && grim -g \"$(slurp)\" ~/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
     )
+)
+
+
+-- ============================================================
+-- LOCK SCREEN
+-- Alt + L
+-- ============================================================
+
+hl.bind(
+    mainMod .. " + L",
+    hl.dsp.exec_cmd("hyprlock")
+)
+
+
+-- ============================================================
+-- SHUTDOWN
+-- Alt + Shift + L
+-- ============================================================
+
+hl.bind(
+    mainMod .. " + SHIFT + L",
+    hl.dsp.exec_cmd("systemctl poweroff")
 )
 
 
@@ -852,9 +870,16 @@ hl.window_rule({
 
     float = true,
 })
-hl.on("hyprland.start", function ()
-    hl.exec_cmd("waybar")
-end)
+
+-- ============================================================
+-- FIREFOX
+-- Alt + W
+-- ============================================================
+
+hl.bind(
+    mainMod .. " + W",
+    hl.dsp.exec_cmd("firefox")
+)
 -----------------------------
 ---- HYPRMOD ----------------
 -----------------------------
