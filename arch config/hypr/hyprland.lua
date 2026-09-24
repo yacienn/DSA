@@ -665,7 +665,6 @@ hl.bind(
     )
 )
 
-
 -- ============================================================
 -- VOLUME DOWN
 -- Alt + Shift + -
@@ -896,7 +895,7 @@ hl.window_rule({
 
 hl.bind(
     mainMod .. " + W",
-    hl.dsp.exec_cmd("firefox")
+    hl.dsp.exec_cmd("brave")
 )
 hl.window_rule({
     name = "vscode-transparent",
@@ -919,4 +918,3 @@ hl.bind(
 )
 -- HyprMod managed settings
 require("hyprland-gui")
-
