@@ -1,0 +1,158 @@
+/* ---------- Base ---------- */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font", monospace;
+    font-size: 13px;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #ffffff;
+}
+
+tooltip {
+    background: rgba(20, 20, 20, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #ffffff;
+    padding: 2px 4px;
+}
+
+/* ---------- Every module gets its own dark pill ---------- */
+#workspaces,
+#clock,
+#network,
+#battery,
+#bluetooth,
+#pulseaudio-slider {
+    background: rgba(20, 20, 20, 0.9);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 0 12px;
+    margin: 3px 4px;
+    transition: background 0.2s ease;
+}
+
+#clock:hover,
+#network:hover,
+#battery:hover,
+#bluetooth:hover {
+    background: rgba(50, 50, 50, 0.95);
+}
+
+#clock {
+    font-weight: bold;
+}
+
+/* ---------- Workspaces ---------- */
+#workspaces {
+    padding: 0 4px;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    margin: 2px;
+    color: #888888;
+    background: transparent;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.active {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border-bottom: 2px solid #f1efef;
+}
+
+#workspaces button.urgent {
+    color: #141414;
+    background: #f7768e;
+}
+
+/* ---------- Bluetooth + volume group ---------- */
+#group-bluetooth-volume {
+    margin: 0;
+}
+
+#bluetooth {
+    margin-right: 0;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: #888888;
+}
+
+#bluetooth.connected {
+    color: #ffffff;
+}
+
+#bluetooth.no-controller {
+    color: #f7768e;
+}
+
+/* ---------- Volume slider ---------- */
+#pulseaudio-slider {
+    min-width: 120px;
+    margin-left: 0;
+}
+
+#pulseaudio-slider trough {
+    min-width: 100px;
+    min-height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+#pulseaudio-slider highlight {
+    min-height: 6px;
+    background: #ffffff;
+    border-radius: 8px;
+}
+
+#pulseaudio-slider slider {
+    min-width: 14px;
+    min-height: 14px;
+    background: #e6e6e6;
+    border-radius: 50%;
+}
+
+/* ---------- Network ---------- */
+#network.disconnected {
+    color: #e5032d;
+}
+
+/* ---------- Battery ---------- */
+#battery.charging,
+#battery.plugged {
+    color: #ffffff;
+}
+
+#battery.warning:not(.charging) {
+    color: #e0af68;
+}
+
+#battery.critical:not(.charging) {
+    color: #da0f34;
+    animation: blink 1s steps(2) infinite alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f7768e;
+        color: #141414;
+    }
+}

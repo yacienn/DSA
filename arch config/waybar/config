@@ -1,0 +1,69 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 5,
+    "margin-left": 11,
+    "margin-right": 10,
+    "exclusive": true,
+    "passthrough": false,
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "network",
+        "group/bluetooth-volume",
+        "battery"
+    ],
+
+    "clock": {
+        "format": "\uf017  {:%H:%M}"
+    },
+
+    "network": {
+        "format-wifi": "\uf1eb  {signalStrength}%",
+        "format-disconnected": "\uf6ab  Disconnected"
+    },
+
+    "group/bluetooth-volume": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "bluetooth-volume-child",
+            "click-to-reveal": true
+        },
+        "modules": [
+            "bluetooth",
+            "pulseaudio/slider"
+        ]
+    },
+
+    "bluetooth": {
+        "format": "\uf293  {status}",
+        "format-connected": "\uf293  {device_alias}",
+        "format-disabled": "\uf294  Off",
+        "format-off": "\uf294  Off",
+        "format-no-controller": "\uf294  No Bluetooth",
+        "format-connected-battery": "\uf293  {device_alias} {device_battery_percentage}%"
+    },
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal",
+        "tooltip": true
+    },
+
+    "battery": {
+        "format": "{icon}  {capacity}%",
+        "format-charging": "\uf0e7  {capacity}%",
+        "format-plugged": "\uf1e6  {capacity}%",
+        "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"]
+    }
+}
