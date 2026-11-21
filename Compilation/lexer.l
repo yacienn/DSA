@@ -1,15 +1,21 @@
 %{
 #include <stdio.h>
-int nbr_line = 1 ;
+int nb_ligne = 1 ;
 %}
 lettre [a-zA-Z]
+KEY (int|float|string)
 chiffre [0-9]
 IDF {lettre}({lettre}|{chiffre})*
 CST {chiffre}+
+LOCKED {KEY}
 %%
+{LOCKED}       { printf ("KEY: %s\n" , yytext);}
+
 {IDF}       { printf("IDF: %s\n", yytext); }
 
 {CST}       { printf("CST: %s\n", yytext); }
+
+
 
 =           { printf("AFF: %s\n", yytext); }
 
