@@ -33,5 +33,6 @@ int main(void)
 {
     printf("Enter your code:\n");
     yyparse();
+    yywrap();
     return 0;
 }
