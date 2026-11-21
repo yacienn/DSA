@@ -456,9 +456,11 @@ char *yytext;
 #line 1 "lexer.l"
 #line 3 "lexer.l"
 #include <stdio.h>
+#include "parser.tab.h"
+
 int nb_ligne = 1;
-#line 460 "lex.yy.c"
-#line 461 "lex.yy.c"
+#line 462 "lex.yy.c"
+#line 463 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -675,10 +677,10 @@ YY_DECL
 		}
 
 	{
-#line 17 "lexer.l"
+#line 19 "lexer.l"
 
 
-#line 681 "lex.yy.c"
+#line 683 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -737,43 +739,43 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 19 "lexer.l"
-{ printf("LOCKED: %s\n", yytext); }
+#line 21 "lexer.l"
+{ return LOCKED; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 21 "lexer.l"
-{ printf("IDF: %s\n", yytext); }
+#line 23 "lexer.l"
+{ return IDF; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 23 "lexer.l"
-{ printf("CST: %s\n", yytext); }
+#line 25 "lexer.l"
+{ return CST; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 25 "lexer.l"
-{ printf("EQUAL: %s\n", yytext); }
+#line 27 "lexer.l"
+{ return EQUAL; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 27 "lexer.l"
-{ printf("PVG: %s\n", yytext); }
+#line 29 "lexer.l"
+{ return PVG; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 29 "lexer.l"
+#line 31 "lexer.l"
 { /* Ignore spaces and tabs */ }
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 31 "lexer.l"
+#line 33 "lexer.l"
 { nb_ligne++; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 33 "lexer.l"
+#line 35 "lexer.l"
 {
                 printf("Lexical error at line %d: %s\n",
                        nb_ligne, yytext);
@@ -781,10 +783,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 38 "lexer.l"
+#line 40 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 787 "lex.yy.c"
+#line 789 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1789,13 +1791,6 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 38 "lexer.l"
+#line 40 "lexer.l"
 
-
-int main(void)
-{
-    printf("Enter the code:\n");
-    yylex();
-    return 0;
-}
 

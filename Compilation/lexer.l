@@ -1,8 +1,9 @@
 
 %{
 #include <stdio.h>
-int nb_ligne = 1;
 #include "parser.tab.h"
+
+int nb_ligne = 1;
 %}
 
 lettre [a-zA-Z]
@@ -17,15 +18,15 @@ EQUAL =
 
 %%
 
-{LOCKED}    { printf("LOCKED: %s\n", yytext); }
+{LOCKED}    { return LOCKED; }
 
-{IDF}       { printf("IDF: %s\n", yytext); }
+{IDF}       { return IDF; }
 
-{CST}       { printf("CST: %s\n", yytext); }
+{CST}       { return CST; }
 
-{EQUAL}     { printf("EQUAL: %s\n", yytext); }
+{EQUAL}     { return EQUAL; }
 
-;           { printf("PVG: %s\n", yytext); }
+;           { return PVG; }
 
 [ \t]+      { /* Ignore spaces and tabs */ }
 
@@ -36,11 +37,4 @@ EQUAL =
                        nb_ligne, yytext);
             }
 
-%%
-
-int main(void)
-{
-    printf("Enter the code:\n");
-    yylex();
-    return 0;
-}
+%% 
