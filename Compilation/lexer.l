@@ -1,23 +1,29 @@
+
 %{
 #include <stdio.h>
-int nb_ligne = 1 ;
+int nb_ligne = 1;
+#include "parser.tab.h"
 %}
+
 lettre [a-zA-Z]
-KEY (int|float|string)
 chiffre [0-9]
+
+locked (int|float|string)
+
 IDF {lettre}({lettre}|{chiffre})*
 CST {chiffre}+
-LOCKED {KEY}
+LOCKED {locked}
+EQUAL =
+
 %%
-{LOCKED}       { printf ("KEY: %s\n" , yytext);}
+
+{LOCKED}    { printf("LOCKED: %s\n", yytext); }
 
 {IDF}       { printf("IDF: %s\n", yytext); }
 
 {CST}       { printf("CST: %s\n", yytext); }
 
-
-
-=           { printf("AFF: %s\n", yytext); }
+{EQUAL}     { printf("EQUAL: %s\n", yytext); }
 
 ;           { printf("PVG: %s\n", yytext); }
 
@@ -29,10 +35,12 @@ LOCKED {KEY}
                 printf("Lexical error at line %d: %s\n",
                        nb_ligne, yytext);
             }
+
 %%
 
-int main(void){
-    printf("inter the code \n");
+int main(void)
+{
+    printf("Enter the code:\n");
     yylex();
-    return 0 ;
+    return 0;
 }

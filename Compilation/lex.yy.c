@@ -454,9 +454,9 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 #line 1 "lexer.l"
-#line 2 "lexer.l"
+#line 3 "lexer.l"
 #include <stdio.h>
-int nb_ligne = 1 ;
+int nb_ligne = 1;
 #line 460 "lex.yy.c"
 #line 461 "lex.yy.c"
 
@@ -675,9 +675,10 @@ YY_DECL
 		}
 
 	{
-#line 11 "lexer.l"
+#line 17 "lexer.l"
 
-#line 680 "lex.yy.c"
+
+#line 681 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -736,43 +737,43 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 12 "lexer.l"
-{ printf ("KEY: %s\n" , yytext);}
+#line 19 "lexer.l"
+{ printf("LOCKED: %s\n", yytext); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 14 "lexer.l"
+#line 21 "lexer.l"
 { printf("IDF: %s\n", yytext); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 16 "lexer.l"
+#line 23 "lexer.l"
 { printf("CST: %s\n", yytext); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 20 "lexer.l"
-{ printf("AFF: %s\n", yytext); }
+#line 25 "lexer.l"
+{ printf("EQUAL: %s\n", yytext); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 22 "lexer.l"
+#line 27 "lexer.l"
 { printf("PVG: %s\n", yytext); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 24 "lexer.l"
+#line 29 "lexer.l"
 { /* Ignore spaces and tabs */ }
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 26 "lexer.l"
+#line 31 "lexer.l"
 { nb_ligne++; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 28 "lexer.l"
+#line 33 "lexer.l"
 {
                 printf("Lexical error at line %d: %s\n",
                        nb_ligne, yytext);
@@ -780,10 +781,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 32 "lexer.l"
+#line 38 "lexer.l"
 ECHO;
 	YY_BREAK
-#line 786 "lex.yy.c"
+#line 787 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1788,11 +1789,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 32 "lexer.l"
+#line 38 "lexer.l"
 
 
-int main(void){
-    printf("inter the code \n");
+int main(void)
+{
+    printf("Enter the code:\n");
     yylex();
-    return 0 ;
+    return 0;
 }
+
